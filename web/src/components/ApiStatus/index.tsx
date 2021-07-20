@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApiExecStatus } from '../../models/ApiExec';
-//import IconLoading from '../Icons/Loading';
+import IconLoading from '../Icons/Loading';
 
 import './index.scss';
 
@@ -9,20 +9,18 @@ interface ApiStatusProps {
 }
 
 
-const TTApiStatus: React.FC<ApiStatusProps> = (props) => {
+const ApiStatus: React.FC<ApiStatusProps> = (props) => {
     switch (props.status) {
         case ApiExecStatus.Error:
         case ApiExecStatus.Ok:
             return null;
         case ApiExecStatus.Init:
         case ApiExecStatus.Loading:
-           // return (<span className="tt-api-status"><IconLoading/></span>)
-           return null;
-
+            return (<span className="api-status"><IconLoading/></span>)
         default:
             return null;
     }
 }
   
-export default TTApiStatus;
+export default ApiStatus;
 

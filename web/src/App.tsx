@@ -1,6 +1,10 @@
 import React, { Suspense } from 'react';
+import { useSelector } from 'react-redux';
 
 import { BrowserRouter } from 'react-router-dom';
+import ApiStatus from './components/ApiStatus';
+import { ApiExecStatus } from './models/ApiExec';
+import { AppDataState } from './models/AppState';
 
 import Routes from './routes';
 
@@ -8,13 +12,9 @@ import Routes from './routes';
 
 function Page() {
 	
-	//const apiStatus   = useSelector((state:AppDataState) => state.apiExec)
-	//const currentUser = useSelector((state:AppDataState) => state.currentUser);
-    //const token = currentUser?.loggedIn && currentUser?.user?.token;
+	const apiStatus   = useSelector((state:AppDataState) => state.apiExec)
 	//const { httpStatusToTitle } = errorMsgHandler();
 	
-	
-
 	//let errorMessage = null;
 	/*if (apiStatus?.status === ApiExecStatus.Error && apiStatus?.error?.response ) {
 
@@ -31,12 +31,9 @@ function Page() {
 						<TTUserMenu nickname={currentUser.user.nickname || ""} />
 					  : null );*/
 
-	
-
-
-
 	return (
 		<div className="App">
+			<ApiStatus status={apiStatus?.status || ApiExecStatus.Idle} />
 			<BrowserRouter>
 				<Routes />
 			</BrowserRouter>
@@ -46,7 +43,9 @@ function Page() {
 
 const Loader = () => (
 	<div className="App">
-    	<div>carregando...</div>
+    	<div>
+			<ApiStatus status={ApiExecStatus.Loading} />
+		</div>
   	</div>
 );
 

@@ -4,6 +4,7 @@ import server from '../index';
 
 let app:any = server;
 
+
 describe ("resume test", () => {
 
     it ('should access "/"', (done) => {
@@ -45,14 +46,42 @@ describe ("resume test", () => {
                     expect(element).toBeObject();
                     expect(element).not.toBeNull();
 
-                    expect(element).toMatchSnapshot({
-                        name        : expect.any(String),
-                        level       : expect.any(Number),
-                        maxLevel    : expect.any(Number)
+                    expect(element).toHaveProperty('name');
+                    expect(element.name).not.toBeNull();
+                    expect(element.name).toBeString();
+                    expect(element.name).not.toBeEmpty();
+
+                    expect(element).toHaveProperty('skills');
+                    expect(element.skills).not.toBeNull();
+                    expect(element.skills).toBeArray();
+                    expect(element.skills).not.toBeArrayOfSize(0);
+
+                    element.skills.forEach(skill => {
+                        
+                        expect(skill).toHaveProperty('name');
+                        expect(skill.name).not.toBeNull();
+                        expect(skill.name).toBeString();
+                        expect(skill.name).not.toBeEmpty();
+
+                        expect(skill).toHaveProperty('maxLevel');
+                        expect(skill.maxLevel).not.toBeNull();
+                        expect(skill.maxLevel).toBeNumber();
+                        expect(skill.maxLevel).toBeGreaterThan(0);
+
+                        expect(skill).toHaveProperty('level');
+                        expect(skill.level).not.toBeNull();
+                        expect(skill.level).toBeNumber();
+                        expect(skill.level).toBeLessThanOrEqual(skill.maxLevel);
+                        expect(skill.level).toBeGreaterThanOrEqual(0);
+                        
+
+                        if (skill.text !== undefined) {
+                            expect(skill.text).not.toBeNull();
+                            expect(skill.text).toBeString();
+                            expect(skill.text).not.toBeEmpty();
+                        }
                     })
 
-                    expect(element.level).toBeLessThanOrEqual(element.maxLevel);
-                    expect(element.name).not.toBeEmpty();
                 });
             done();
         });

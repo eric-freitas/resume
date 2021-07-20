@@ -16,3 +16,12 @@ Object {
   "text": "X",
 }
 `;
+
+exports[`resume test should list "/skills" 3`] = `
+Object {
+  "level": toBeNumber<>,
+  "maxLevel": toBeNumber<>,
+  "name": toBeString<>,
+  "text": "",
+}
+`;

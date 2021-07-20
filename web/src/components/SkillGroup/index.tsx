@@ -1,7 +1,7 @@
 import React  from 'react';
 import { useState } from 'react';
-import IconChevronDown from '../../../components/Icons/ChevronDown';
-import IconChevronUp from '../../../components/Icons/ChevronUp';
+import IconChevronDown from '../Icons/ChevronDown';
+import IconChevronUp from '../Icons/ChevronUp';
 
 import './skill-group.scss';
 
