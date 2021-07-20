@@ -11,7 +11,7 @@ interface ErorMsgProps {
     icon    : IconDefinition
 }
 
-const TTErrorMessage: React.FC<ErorMsgProps> = (props) => {
+const ErrorMessage: React.FC<ErorMsgProps> = (props) => {
     const [show, setShow] = useState(true);
 
     const sleep = (ms: number) => {
@@ -51,4 +51,4 @@ const TTErrorMessage: React.FC<ErorMsgProps> = (props) => {
 
 }
   
-export default TTErrorMessage;
+export default ErrorMessage;
