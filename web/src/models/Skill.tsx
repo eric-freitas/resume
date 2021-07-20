@@ -7,5 +7,6 @@ export interface SkillData {
 
 export interface SkillGroupData {
     name    : string,
+    title   : string,
     skills  : SkillData[]
 }

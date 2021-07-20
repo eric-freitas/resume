@@ -6,6 +6,7 @@ export interface Skill {
 }
 
 export interface SkillGroup {
+    title   : string
     name    : string,
     skills  : Skill[]
 }

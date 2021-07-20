@@ -47,9 +47,9 @@ const Skills = () => {
           return (
                skills &&
                skills.map(_skill => {
-                    const { name, skills } = _skill;
+                    const { name, title, skills } = _skill;
                     return (
-                         <SkillGroup key={name} name={name}>
+                         <SkillGroup key={name} name={title}>
                               {renderSubItens(skills)}
                          </SkillGroup>
                     )

@@ -51,6 +51,12 @@ describe ("resume test", () => {
                     expect(element.name).toBeString();
                     expect(element.name).not.toBeEmpty();
 
+
+                    expect(element).toHaveProperty('title');
+                    expect(element.title).not.toBeNull();
+                    expect(element.title).toBeString();
+                    expect(element.title).not.toBeEmpty();
+
                     expect(element).toHaveProperty('skills');
                     expect(element.skills).not.toBeNull();
                     expect(element.skills).toBeArray();

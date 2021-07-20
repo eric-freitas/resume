@@ -9,8 +9,6 @@ import { ExperienceData } from '../../models/Experience';
 const ExperienceItem:React.FC<ExperienceData> = (props) => {
     const { company, conclusion, start, position, detail, attribution } = props;
 
-    console.log(detail, attribution);
-
     const mdDetail = (detail && <ReactMarkdown className="experience-item__detail">{detail}</ReactMarkdown>) || null
     const attributionList = 
         (   attribution && 

@@ -3,27 +3,30 @@ import { startLog }       from "../utils/logger";
 import config from '../utils/config';
 import { EducationItem } from "../models/education";
 
+import Db from '../db/controllers/education';
+
 const logger = startLog("education-controller");
 
 class EducationController {
 
-    async list(lang: string): Promise<EducationItem[]> {
-        return [
-            {
-                title       : "Bacharelado em **Ciências da Computação**",
-                conclusion  : "2004",
-                institution : "Uninove"
-            },{
-                title       : "Iniciação Científica",
-                conclusion  : "2003",
-                institution : "Uninove",
-                detail      : "Acionamento de dispositivos externos ao computador utilizando reconhecimento de voz."
-            },
-        ];
+    db = new Db();
+
+    async list(lang: string): Promise<EducationItem[]|null> {
+        
+        let result = await this.db.list(lang);
+        if (!result || !result.length) {
+            result = await this.db.list(config.defaultLanguage);
+        }
+
+        if (result && result.length) {
+            return result;
+        } else {
+            return null;
+        }
+        
     };
 
 }
 
 export default EducationController;
-
 

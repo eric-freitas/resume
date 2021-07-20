@@ -32,7 +32,7 @@ pool.on('error', (err, client) => {
     logger.error("Error", { err });
 }) ;
 
-export const schema = pgConn.schema || "todo";
+export const schema = pgConn.schema || "resume";
 
 export async function runTransaction (transaction: (c:PoolClient) => Promise<any|null>): Promise<any|null> {
     const client = await pool.connect();

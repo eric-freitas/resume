@@ -18,8 +18,14 @@ let config_data = {
     allowedOrigins      : config_file.allowedOrigins              || ["http://localhost:3333", "http://191.252.120.78:8091" ],
     tolerance           : process.env.TOLERANCE                   || config_file.tolerance       || 1,
     logging             : config_file.logging,
+    
     pgConn              : process.env.PG_CONN && 
                           JSON.parse(process.env.PG_CONN)         || config_file.pgConn,
+
+    elasticConn         : process.env.ELASTIC_CONN && 
+                          JSON.parse(process.env.ELASTIC_CONN)    || config_file.elasticConn,
+    
+    mongoConn           : process.env.MONGO_CONN                  || config_file.mongoConn,
     google : {
         callback        : process.env.GOOGLE_CALLBACK             || config_file.googleCallback  || 'http://localhost:333',
         clientId        : process.env.GOOGLE_CLIENTID             || config_file.googleClientId  || "",
