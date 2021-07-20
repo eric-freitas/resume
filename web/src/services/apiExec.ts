@@ -39,6 +39,7 @@ const ApiService = () => {
             })
             .catch((error:any) => {
               dispatch && dispatch(allActions.apiExec.setError(error)) ;
+              console.log(error);
               reject(error);
             });
         });
