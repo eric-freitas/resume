@@ -1,15 +1,15 @@
 import React  from 'react';
 import ReactMarkdown from 'react-markdown'
-import { ExperienceAttributionData } from '../../models/ExperienceItem';
+import { ExperienceAttributionData } from '../../models/Experience';
 
 
 const ExperienceAttribution:React.FC<ExperienceAttributionData> = (props) => {
-    const { text, subItens } = props;
+    const { text, attribution } = props;
 
     const subList = 
-    (   subItens && 
-        subItens.length && 
-        (<ul>{subItens.map((item, index) => <ExperienceAttribution key={index} {...item} />)}</ul>)
+    (   attribution && 
+        attribution.length && 
+        (<ul>{attribution.map((item, index) => <ExperienceAttribution key={index} {...item} />)}</ul>)
     ) || null;
 
     return (

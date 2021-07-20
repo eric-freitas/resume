@@ -40,6 +40,10 @@
             font-family: Roboto;
         }
 
+        .experience-item__detail {
+            margin-bottom: $def-padding;
+        }
+
         .experience-item__attribution {
             li {
                 margin-bottom: $def-padding / 2;

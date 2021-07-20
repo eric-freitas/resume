@@ -3,14 +3,15 @@ import ReactMarkdown from 'react-markdown'
 
 import './index.scss';
 import ExperienceAttribution from '../ExperienceAttribution';
-import { ExperienceItemData } from '../../models/ExperienceItem';
+import { ExperienceData } from '../../models/Experience';
 
 
-const ExperienceItem:React.FC<ExperienceItemData> = (props) => {
-    const { company, conclusion, start, position, detail,attribution } = props;
+const ExperienceItem:React.FC<ExperienceData> = (props) => {
+    const { company, conclusion, start, position, detail, attribution } = props;
 
+    console.log(detail, attribution);
 
-    const mdDetail = (detail && <ReactMarkdown>{detail}</ReactMarkdown>) || null
+    const mdDetail = (detail && <ReactMarkdown className="experience-item__detail">{detail}</ReactMarkdown>) || null
     const attributionList = 
         (   attribution && 
             attribution.length && 

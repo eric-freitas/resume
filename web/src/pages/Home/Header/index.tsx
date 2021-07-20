@@ -1,19 +1,57 @@
-import React  from 'react';
+import React, { useEffect, useState }  from 'react';
+
+import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
+
+import { ContactInfoData } from '../../../models/ContactInfo';
+import contactInfoService from '../../../services/contactInfo';
+
 import ContactInfoItem from '../../../components/ContactInfoItem';
 import ContactInfo from '../ContactInfo';
 
-import { useTranslation } from 'react-i18next';
-
-import './header.scss';
 import BrasilFlag from '../../../components/Icons/Flags/Brasil/index';
 import LanguageFlag from '../../../components/LanguageFlag';
 import UsaFlag from '../../../components/Icons/Flags/Usa/index';
 import EspanaFlag from '../../../components/Icons/Flags/Espana';
 
+import './header.scss';
+
+
 const Header = () => {
 
-    
-    const { t } = useTranslation();
+    const dispatch = useDispatch();
+    const [ t, i18n ] = useTranslation();
+    const language = i18n.language;
+
+    const [ contactInfo, setContactInfo ] = useState<ContactInfoData[]>([]);
+
+    useEffect(() => {
+        contactInfoService()
+             .listMyContactInfo(language, dispatch)
+             .then((e:any) => {
+                  const newContactInfo:ContactInfoData[] = e?.data;
+                  if (newContactInfo) {
+                    setContactInfo(newContactInfo);
+                  }
+              })
+    }, [language, dispatch])
+
+
+    const itens = (
+        contactInfo && 
+        contactInfo.map(_ci => {
+            const { icon, text, hint, linkTo } = _ci;
+            const { lib, name } = icon;
+            return (<ContactInfoItem 
+                        key     = {hint}
+                        icon    = {name}
+                        iconLib = {lib}
+                        text    = {text}
+                        linkTo  = {linkTo}
+                        hint    = {hint}
+                    />)
+        })
+    ) || null;
 
     return (
         <header id="header">    
@@ -39,51 +77,7 @@ const Header = () => {
                    
                 </div>
                 <ContactInfo>
-                    <ContactInfoItem 
-                        key     = "linkedin"
-                        icon    = "linkedin" 
-                        iconLib = "fab"
-                        text    = "linkedin.com/in/eric-freitas-matos" 
-                        linkTo  = "https://www.linkedin.com/in/eric-freitas-matos/" 
-                        hint    = "LinkedIn"
-                    />
-
-                    <ContactInfoItem 
-                        key     = "local"
-                        iconLib = "fas"
-                        icon    = "map-marker-alt" 
-                        text    = "Guarulhos - SP, Brasil" 
-                        linkTo  = "https://www.google.com.br/maps/place/Guarulhos+-+SP" 
-                        hint    = "Localização"
-                    />
-                    
-                    <ContactInfoItem 
-                        key     = "facebook"
-                        iconLib = "fab"
-                        icon    = "facebook" 
-                        text    = "facebook.com/ericfmatos" 
-                        linkTo  = "https://www.facebook.com/ericfmatos" 
-                        hint    = "Facebook"
-                    />
-    
-                    <ContactInfoItem 
-                        key     = "instagram"
-                        iconLib = "fab"
-                        icon    = "instagram" 
-                        text    = "@eric_freitas_matos" 
-                        linkTo  = "https://www.instagram.com/eric_freitas_matos/" 
-                        hint    = "Instagram"
-                    />
-
-                    <ContactInfoItem 
-                        key     = "github"
-                        iconLib = "fab"
-                        icon    = "github"
-                        text    = "eric-freitas" 
-                        linkTo  = "https://github.com/eric-freitas" 
-                        hint    = "GitHub"
-                    />
-
+                    {itens}
                 </ContactInfo>
                 
             </div>

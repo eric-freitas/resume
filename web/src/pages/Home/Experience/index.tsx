@@ -1,44 +1,49 @@
-import React  from 'react';
-import ExperienceItem from '../../../components/ExperienceItem';
-import ExperienceSection from '../ExperienceSection';
+import React, { useEffect, useState }  from 'react';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import './experience.scss'
+import experienceService from '../../../services/experience';
+
+import { ExperienceData } from '../../../models/Experience';
+
+import ExperienceItem from '../../../components/ExperienceItem';
+import ExperienceSection from '../ExperienceSection';
 import Education from '../Education';
+
+import './experience.scss'
+
 
 const Experience = () => {
 
-    const { t } = useTranslation();
+    const dispatch = useDispatch();
+    const [ t, i18n ] = useTranslation();
+    const language = i18n.language;
+
+    const [ experience, setExperience ] = useState<ExperienceData[]>([]);
+
+    useEffect(() => {
+        experienceService()
+             .listMyExperience(language, dispatch)
+             .then((e:any) => {
+                  const newExperience:ExperienceData[] = e?.data;
+                  if (newExperience) {
+                    setExperience(newExperience);
+                  }
+              })
+    }, [language, dispatch])
+
+    const itens = (
+        experience &&
+        experience.map (_item => <ExperienceItem key={_item.conclusion} {..._item} /> )
+    ) || null;
 
     return (
+        
        <section className="experience-section">
             <Education/>
             
             <ExperienceSection name={t('experience.professional')}>
-                <ExperienceItem
-                    company     = "Olos"
-                    position    = "Desenvolvimento"
-                    conclusion  = {t('misc.today')}
-                    start       = "2010"
-                    attribution = {
-                        [
-                            {
-                                text : "Desenvolvimento, em .NET, dos módulos que compõem a plataforma Olos, que compreende discador, gravador, DAC e diversas ferramentas para Call Center."
-                            },
-                            {
-                                text: "Responsável pelo desenvolvimento e implementação de atualizações e novas funcionalidades ao core do sistema Olos, utilizando linguagem C# e Node.JS para o back-end e JavaScript, incluindo frameworks JQuery, Bootstrap e React para o front-end. Entre os principais projetos, destacam-se:",
-                                subItens: [
-                                    {  text: "Plataforma OlosChannel, integrando todos os canais disponíveis no Olos em uma única jornada fluída para o cliente" },
-                                    {  text: "Suporte ao PostgreSQL" },
-                                    {  text: "Sistema de gerenciamento dos Agentes Virtuais" },
-                                    {  text: "Chat e E-Mail como canal para contato com os clientes" },
-                                    {  text: "Desenvolvimento do módulo de IVR do Olos" }
-                                ]
-                            }
-                        ]
-                    }
-                            
-                />
+                {itens}                
             </ExperienceSection>
        </section>
     )

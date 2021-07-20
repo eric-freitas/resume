@@ -3,11 +3,11 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Skill, SkillGroup } from  '../../../models/Skill';
+import { SkillData, SkillGroupData } from  '../../../models/Skill';
 import skillsService from '../../../services/skills';
 
-import SkillGroupEl from '../../../components/SkillGroup';
-import SkillEl from '../../../components/Skill';
+import SkillGroup from '../../../components/SkillGroup';
+import Skill from '../../../components/Skill';
 
 import './skills.scss';
 import { useState } from 'react';
@@ -20,13 +20,13 @@ const Skills = () => {
      const [ t, i18n ] = useTranslation();
      const language = i18n.language;
 
-     const [ skills, setSkills ] = useState<SkillGroup[]>([]);
+     const [ skills, setSkills ] = useState<SkillGroupData[]>([]);
  
      useEffect(() => {
           skillsService()
                .listMySkills(language, dispatch)
                .then((e:any) => {
-                    const newSkills:SkillGroup[] = e?.data;
+                    const newSkills:SkillGroupData[] = e?.data;
                     if (newSkills) {
                          setSkills(newSkills)
                     }
@@ -34,24 +34,24 @@ const Skills = () => {
      }, [language, dispatch])
 
 
-     function renderSubItens(skills: Skill[]): React.ReactNode {
+     function renderSubItens(skills: SkillData[]): React.ReactNode {
           return (
                skills &&
                skills.map(_skill => (
-                    <SkillEl key={_skill.name} {..._skill}/>
+                    <Skill key={_skill.name} {..._skill}/>
                ))
           ) || null;
      }
 
-     function renderItens(skills: SkillGroup[]): React.ReactNode {
+     function renderItens(skills: SkillGroupData[]): React.ReactNode {
           return (
                skills &&
                skills.map(_skill => {
                     const { name, skills } = _skill;
                     return (
-                         <SkillGroupEl key={name} name={name}>
+                         <SkillGroup key={name} name={name}>
                               {renderSubItens(skills)}
-                         </SkillGroupEl>
+                         </SkillGroup>
                     )
                })
           ) || null;

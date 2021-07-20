@@ -1,11 +1,11 @@
-export interface Skill {
+export interface SkillData {
     name        : string,
     level       : number,
     maxLevel    : number,
     text?       : string
 }
 
-export interface SkillGroup {
+export interface SkillGroupData {
     name    : string,
-    skills  : Skill[]
+    skills  : SkillData[]
 }
