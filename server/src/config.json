@@ -1,0 +1,19 @@
+{
+    "port": 8095,
+    "defaults":{
+    },
+    "allowedOrigins": [
+        "http://localhost:8095", 
+        "http://localhost:3000",
+        "http://ea0dfae44c5d.ngrok.io",
+        "https://ea0dfae44c5d.ngrok.io"
+    ],
+    "logging": {
+        "level": "debug",
+        "json": false,
+        "multiline": true,
+        "timestamp": true,
+        "colorize": true,
+        "hideSensitiveData": true
+    }
+}

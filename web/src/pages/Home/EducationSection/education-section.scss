@@ -1,0 +1,31 @@
+@import '../../../shared.scss';
+
+.education-section {
+    margin-bottom: $def-padding * 2;
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .education-section__title {
+        padding: $def-padding $def-padding*2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $gray-100;
+        transform: skew(-10deg);
+        color: lighten($blue, 10%);
+        font-weight: normal;
+        margin-left: $def-padding*2;
+        margin-bottom: $def-padding*2;
+        font-size: 1.1rem;
+
+        svg {
+            cursor: pointer;
+        }
+
+    }
+
+    .education-section__content {
+        padding-left: $def-padding * 14;
+    }
+}

@@ -1,0 +1,12 @@
+@import '../../shared.scss';
+
+
+.tt-api-status{
+    color: white;
+    position: absolute;
+    top: 2px;
+    left: 8px;
+    font-size: 2em;
+    z-index: 1010;
+    padding: $def-padding/2;
+}

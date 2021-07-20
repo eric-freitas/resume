@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`resume test should list "/skills" 1`] = `
+Object {
+  "level": Any<Number>,
+  "maxLevel": Any<Number>,
+  "name": Any<String>,
+}
+`;
+
+exports[`resume test should list "/skills" 2`] = `
+Object {
+  "level": Any<Number>,
+  "maxLevel": Any<Number>,
+  "name": Any<String>,
+  "text": "X",
+}
+`;

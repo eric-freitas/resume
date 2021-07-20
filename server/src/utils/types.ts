@@ -1,0 +1,1 @@
+export type ValidaDataIdFunction = (e:number) => any;

@@ -1,0 +1,10 @@
+@import '../../../shared.scss';
+
+.skills-section{
+    background-color: $gray-100;
+    padding: $def-padding $def-padding * 4;
+    margin: 0 $def-padding*4;
+    width: 25%;
+    display: inline-block;
+    color: $gray-800;
+}

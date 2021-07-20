@@ -1,0 +1,15 @@
+@import '../../shared.scss';
+
+.contact-info-item {
+    margin-bottom: $def-padding/2;
+    
+    &:last-child {
+        margin-bottom: initial;
+    }
+
+    svg{
+        font-size: 1.25rem;
+        margin-left: $def-padding;
+        color: $blue;
+    }
+}

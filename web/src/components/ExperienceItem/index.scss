@@ -1,0 +1,53 @@
+@import '../../shared.scss';
+
+.experience-item {
+
+    margin-bottom: $def-padding *4 ;
+    display: flex;
+
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    > * {
+        display: inline-block;
+    }
+
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    .experience-item__duration {
+        min-width: $def-padding * 14;
+
+        h4 {
+            margin-bottom: 0;
+            
+            .exp-item__title {
+                font-size: 1rem;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .experience-item__content {
+
+        .experience-item__position {
+            font-family: Roboto;
+        }
+
+        .experience-item__attribution {
+            li {
+                margin-bottom: $def-padding / 2;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

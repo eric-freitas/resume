@@ -1,0 +1,20 @@
+@import '../../../shared.scss';
+
+.skill-group__title {
+    padding: $def-padding $def-padding*2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: lighten($blue, 10%);
+    transform: skew(-10deg);
+    color: $gray-100;
+    margin: $def-padding*2 $def-padding*-8;
+
+    font-size: 1.1rem;
+    font-weight: normal;
+
+    svg {
+        cursor: pointer;
+    }
+    
+}

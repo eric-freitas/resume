@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es5",                          
+    "module": "commonjs",                     
+    "strict": true,                           
+    "esModuleInterop": true,                   
+    "skipLibCheck": true,                     
+    "forceConsistentCasingInFileNames": true ,
+    "resolveJsonModule": true,
+    "noImplicitAny": false
+  },
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
+}

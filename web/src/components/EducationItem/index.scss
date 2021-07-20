@@ -1,0 +1,34 @@
+@import '../../shared.scss';
+
+.education-item {
+
+    margin-bottom: $def-padding *4 ;
+    display: flex;
+    flex-direction: column;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    > * {
+        display: inline-block;
+    }
+
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    .concluded {
+        font-size: 0.8rem;
+        margin-left: $def-padding;
+    }
+
+    h4 {
+        margin-bottom: $def-padding / 2;
+        .education-item__title {
+            font-size: 1.25rem;
+        }
+    }
+}

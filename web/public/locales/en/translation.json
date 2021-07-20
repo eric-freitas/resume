@@ -1,0 +1,13 @@
+{
+    "main": {
+        "position": "Developer"
+    },
+    "experience": {
+        "education": "Education",
+        "concluded": "Completed in %1",
+        "professional": "Experience"
+    },
+    "misc": {
+        "today": "Today"
+    }
+}

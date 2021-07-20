@@ -1,0 +1,46 @@
+@import '../../shared.scss';
+
+.tt-error-msg {
+    position: absolute;
+    bottom: 0;
+    left:  0;
+    right: 0;
+    width: 100%;
+    display: block;
+    background-color: var(--red);
+    border: none ; 
+    border-radius: 0;
+    margin: 0 ;
+    max-width: 100% ;
+    color: var(--white) ;
+
+    > div {
+        display: inline-block;
+    }
+
+    > :first-child {
+        
+        vertical-align: top;
+        
+        font-size: 2em;
+        font-weight: lighter;
+        padding: $def-padding;
+    }
+
+    > :last-child {
+
+        display: inline-block;
+
+        .tt-error-msg__header  {
+            color: var(--white) ;
+            border-radius: 0;
+            border : none;
+            padding: $def-padding / 4;
+            background-color: initial;
+        }
+
+        .tt-error-msg__body {
+            padding: $def-padding / 4;
+        }
+    }
+}

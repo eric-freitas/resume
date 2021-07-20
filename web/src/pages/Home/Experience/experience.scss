@@ -1,0 +1,9 @@
+@import '../../../shared.scss';
+
+.experience-section{
+    padding: $def-padding;
+    padding-right: 0;
+    margin: 0 $def-padding/2 $def-padding*4 $def-padding;
+    width: 75%;
+    display: inline-block;
+}

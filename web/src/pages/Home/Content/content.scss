@@ -1,0 +1,11 @@
+@import '../../../shared.scss';
+
+.main-content {
+    padding: $def-padding * 2 0;
+    display: flex;
+    align-content: center;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-direction: row;
+    
+}

@@ -1,0 +1,50 @@
+@import '../../../shared.scss';
+
+header {
+    padding: $def-padding * 4 $def-padding * 16;
+    background-color: $gray-100;
+    color: $gray-800;
+    
+    display: flex !important;
+    justify-content: space-between;
+    align-content: center;
+    align-items: flex-end;
+
+    h1 {
+        margin-bottom: 0;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    .header__title {
+        display: inline-block;
+    }
+
+    .contact-info {
+        display: inline-block;
+        text-align: right;
+    }
+
+    .languages {
+        text-align: right;
+        margin-bottom: $def-padding;
+        .lang-flag {
+            cursor: pointer;
+            margin-right: $def-padding;
+
+            &:last-child{
+                margin-right: 0;
+            }
+
+            svg {
+                border-radius: 4px;
+            }
+        }
+    }
+
+    @media screen and (max-width: $break-medium) {
+        padding: $def-padding * 2;          
+    }
+}
