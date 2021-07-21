@@ -1,7 +1,7 @@
 @import '../../../shared.scss';
 
 header {
-    padding: $def-padding * 4 $def-padding * 16;
+    padding: $def-padding * 2 $def-padding * 4;
     background-color: $gray-100;
     color: $gray-800;
     
@@ -10,21 +10,47 @@ header {
     align-content: center;
     align-items: flex-end;
 
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1001;
+    box-shadow: 0 0.5rem 1rem rgb(21 20 29 / 15%);
+
+    min-height: 200px;
+
     h1 {
         margin-bottom: 0;
+        white-space: nowrap;
+        @media screen and (max-width: $break-small) {
+            font-size: 1.75rem;
+        }
     }
 
     h2 {
         font-size: 1.25rem;
+        margin-bottom: 0;
+        
     }
+
 
     .header__title {
         display: inline-block;
+        @media screen and (max-width: $break-small) {
+            width: 100%;
+        }
     }
 
+    .header__content {
+        text-align: right;
+    }
     .contact-info {
         display: inline-block;
         text-align: right;
+        white-space: nowrap;
+        @media screen and (max-width: $break-small) {
+            display: flex;
+        }
     }
 
     .languages {
@@ -42,9 +68,20 @@ header {
                 border-radius: 4px;
             }
         }
+        @media screen and (max-width: $break-small) {
+            display: flex;
+        }
     }
 
     @media screen and (max-width: $break-medium) {
         padding: $def-padding * 2;          
+        
+    }
+
+    @media screen and (max-width: $break-small) {
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        min-height: 150px;
     }
 }

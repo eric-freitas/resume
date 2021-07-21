@@ -16,6 +16,13 @@ body {
   background-color:$gray-800;
   color: $gray-100;
   padding: $def-padding;
+  padding-top: 200px;
+
+  
+  @media screen and (max-width: $break-small) {
+    padding-top: 150px;
+    
+  }
 }
 
 h1 {

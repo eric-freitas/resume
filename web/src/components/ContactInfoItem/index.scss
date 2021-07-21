@@ -11,5 +11,13 @@
         font-size: 1.25rem;
         margin-left: $def-padding;
         color: $blue;
+        min-width: 20px;
+        text-align: center;
+    }
+
+    span {
+        @media screen and (max-width: $break-medium){
+            display: none;    
+        }
     }
 }
