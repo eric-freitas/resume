@@ -3,12 +3,28 @@ import { startLog }       from "../utils/logger";
 import config from '../utils/config';
 import { Experience } from "../models/experience";
 
-const logger = startLog("Experience-controller");
+import Db from '../db/controllers/experience';
+
+const logger = startLog("experience-controller");
 
 class ExperienceController {
 
-    async list(lang: string): Promise<Experience[]> {
-        return [
+    db = new Db();
+
+    async list(lang: string): Promise<Experience[]|null> {
+
+        let result = await this.db.list(lang);
+        if (!result || !result.length) {
+            result = await this.db.list(config.defaultLanguage);
+        }
+
+        if (result && result.length) {
+            return result;
+        } else {
+            return null;
+        }
+
+        /*return [
             {
                 company     : "Olos",
                 position    : "Desenvolvimento",
@@ -29,7 +45,7 @@ class ExperienceController {
                 ]
                 
             },
-        ];
+        ];*/
     };
 
 }
