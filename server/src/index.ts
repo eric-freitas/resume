@@ -11,7 +11,6 @@ import config from './utils/config';
 dotenv.config();
 
 const port = config.port;
-console.log(port);
 
 const app = express();
 const corsOption = {
