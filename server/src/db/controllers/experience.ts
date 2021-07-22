@@ -44,8 +44,6 @@ class DbExperience {
     private serialize(data: IExperience): Experience {
         const { lang, company, position, conclusion, start, detail, attribution } = data;
 
-        console.log("data", data);
-
         return {
             company     : String(company),
             conclusion  : String(conclusion),

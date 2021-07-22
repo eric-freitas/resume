@@ -21,7 +21,11 @@ body {
   
   @media screen and (max-width: $break-small) {
     padding-top: 150px;
-    
+  }
+
+  @media screen and (max-width: $break-medium) {
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 

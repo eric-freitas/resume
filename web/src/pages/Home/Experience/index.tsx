@@ -12,14 +12,21 @@ import Education from '../Education';
 
 import './experience.scss'
 
+export interface ExperienceProps {
+    selected : boolean
+}
 
-const Experience = () => {
+const Experience:React.FC<ExperienceProps> = (props) => {
+
+    const { selected } = props;
 
     const dispatch = useDispatch();
     const [ t, i18n ] = useTranslation();
     const language = i18n.language;
 
     const [ experience, setExperience ] = useState<ExperienceData[]>([]);
+
+    const className = `experience-section ${selected ? "--selected" : ""}`
 
     useEffect(() => {
         experienceService()
@@ -39,7 +46,7 @@ const Experience = () => {
 
     return (
         
-       <section className="experience-section">
+       <section className={className}>
             <Education/>
             
             <ExperienceSection name={t('experience.professional')}>

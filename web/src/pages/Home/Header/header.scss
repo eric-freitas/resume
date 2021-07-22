@@ -75,7 +75,7 @@ header {
 
     @media screen and (max-width: $break-medium) {
         padding: $def-padding * 2;          
-        
+        box-shadow: none;
     }
 
     @media screen and (max-width: $break-small) {
@@ -83,5 +83,6 @@ header {
         justify-content: flex-start;
         flex-wrap: nowrap;
         min-height: 150px;
+        
     }
 }

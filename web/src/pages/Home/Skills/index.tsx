@@ -12,7 +12,13 @@ import Skill from '../../../components/Skill';
 import './skills.scss';
 import { useState } from 'react';
 
-const Skills = () => {
+export interface SkillsProps {
+     selected : boolean
+}
+
+const Skills: React.FC<SkillsProps> = (props) => {
+
+     const { selected } = props;
 
      const dispatch = useDispatch();
 
@@ -21,6 +27,8 @@ const Skills = () => {
      const language = i18n.language;
 
      const [ skills, setSkills ] = useState<SkillGroupData[]>([]);
+
+     const className = `skills-section ${selected ? "--selected" : ""}`
  
      useEffect(() => {
           skillsService()
@@ -59,7 +67,7 @@ const Skills = () => {
      
 
      return (
-          <section className="skills-section">
+          <section className={className}>
                {renderItens(skills)}
           </section>
      )

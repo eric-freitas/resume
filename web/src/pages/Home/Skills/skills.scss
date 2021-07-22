@@ -9,4 +9,13 @@
     color: $gray-800;
     min-width: 200px;
     box-sizing: content-box;
+
+    @media screen and (max-width: $break-medium) {
+        display: none;
+        width: auto;
+
+        &.--selected {
+            display: block;
+        }
+    }
 }

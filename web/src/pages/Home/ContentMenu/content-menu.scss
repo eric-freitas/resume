@@ -1,0 +1,31 @@
+@import '../../../shared.scss';
+
+.content-menu{
+    display: none;
+
+    @media screen and (max-width:$break-medium) {
+        display: block;        
+        width: 100%;
+    }
+
+    ul {
+        list-style: none;
+        display: block;
+        padding: 0;
+        .content-menu-item {
+            display: inline-block;
+            width: 50%;
+
+            border: 1px solid $gray-100;
+            text-align: center;
+            padding: $def-padding * 2;
+
+            cursor: pointer;
+
+            &.--selected {
+                background-color: $gray-100;
+                color: $gray-800;
+            }
+        }
+    }
+}

@@ -6,4 +6,17 @@
     margin: 0 $def-padding/2 $def-padding*4 $def-padding;
     width: 75%;
     display: inline-block;
+
+    @media screen and (max-width: $break-medium) {
+        display: none;
+        width: auto;
+
+        margin: 0;
+        padding:0;
+
+        &.--selected {
+            display: block;
+        }
+    }
+
 }

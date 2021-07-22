@@ -2,6 +2,10 @@
     "main": {
         "position": "Desarrollador"
     },
+    "menu": {
+        "skills": "Habilidades",
+        "experience": "Experiencia"
+    },
     "experience": {
         "education": "Educación",
         "concluded": "Concluido en %1",
