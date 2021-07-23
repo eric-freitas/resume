@@ -1,9 +1,5 @@
 import { Pool, PoolClient } from 'pg';
-
-import config       from '../utils/config';
-//import { startLog } from '../utils/logger';
-
-//const logger = startLog("postgres-conn");
+import config from '../utils/config';
 
 const pgConn:any = config.pgConn;
 
@@ -16,20 +12,15 @@ let poolOk = true;
 
 pool.on('connect', client => {
     client.query(`set search_path to '${schema}'`);
-  //  logger.info("Client connected. ");
-
 });
 
 pool.on('acquire', client => {
-    //logger.info("Client acquired. ");
 });
 
 pool.on('remove', client => {
-    //logger.info("Client removed. ");
 });
 
 pool.on('error', (err, client) => {
-    //logger.error("Error", { err });
 }) ;
 
 export const schema = pgConn.schema || "resume";
@@ -42,7 +33,6 @@ export async function runTransaction (transaction: (c:PoolClient) => Promise<any
         res = await transaction(client);
         await client.query ('COMMIT');
     } catch (er) {
-      //  logger.error("transaction error", {...er});
         await client.query('ROLLBACK');
         throw new Error (er.message || er);
     } finally {
@@ -60,6 +50,5 @@ export async function stop () {
 
 export function logTransaction (title: string, text: string, result: any)  {
     const { _parsers, _types, ...dados } = result;
-    //logger.info(title, { text, dados });
 }
 

@@ -1,6 +1,6 @@
 import 'jest-extended';
 import httpFunction from '../skills/index'
-import context from '../testing/defaultContext'
+import context from './defaultContext'
 
 const config = require('../local.settings.json')
 process.env = Object.assign(process.env, {...config.Values});
