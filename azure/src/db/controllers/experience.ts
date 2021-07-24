@@ -61,7 +61,7 @@ class DbExperience {
     async list (lang: string) : Promise<Experience[]> {
         connect();
         try {
-            const result:IExperience[] = await MongoExperience.find({lang: lang});
+            const result:IExperience[] = await MongoExperience.find({lang: lang}).sort({conclusion: -1});
 
             if (result && result.length) {
                 return result.map(_r => this.serialize(_r));
