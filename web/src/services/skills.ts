@@ -6,7 +6,7 @@ const SkillsService = () => {
 	const {  doGet } = apiService();
 
 	const listMySkills = async (lang: string, dispatch: Dispatch<any>) => {
-        return doGet(`/skills/${lang}`, undefined, dispatch);
+        return doGet(`/skills/${lang}?code=saQaBecryIBfnNy9dpJlJCpBa5a0lVByLVSOVp3hJQgepO25F09hJA==`, undefined, dispatch);
 	}
 	return {
 		listMySkills

@@ -4,7 +4,7 @@ import { exportError } from '../src/utils/routes';
 import ExperienceController from '../src/controllers/experience';
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    const lang = (req.query.lang || (req.body && req.body.lang));
+    const lang =  context.bindingData?.lang ||  req.query?.lang || req.body?.lang || "";
     let response = { status: 200, body: null };
 
     try {
