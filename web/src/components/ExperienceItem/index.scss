@@ -1,11 +1,10 @@
 @import '../../shared.scss';
 
 .experience-item {
-
-    margin-bottom: $def-padding *4 ;
+   
     display: flex;
-
-
+    margin-bottom: $def-padding;
+    margin-top: $def-padding;
     &:last-child {
         margin-bottom: 0;
     }
@@ -13,7 +12,6 @@
     > * {
         display: inline-block;
     }
-
 
     p {
         margin: 0;
@@ -34,7 +32,45 @@
         }
     }
 
+    &.--expanded {
+        .experience-item__splitter {    
+            .experience-item__bar {
+                background-color: $gray-600;
+            }
+        }
+    }
+
+    .experience-item__splitter {
+        position: relative;
+        padding: 0 8px;
+        margin-top: $def-padding;
+        margin-right: $def-padding;
+
+        .experience-item__bar {
+            
+            height: 100%;
+            width: 2px;
+        }
+
+        .experience-item__dot {
+            width: 16px;
+            height: 16px;
+            background-color: $gray-600;
+            border-radius: 100%;
+            position: absolute;
+            top: -4px;
+            left: 1px;
+            cursor: pointer;
+        }
+    }
+
     .experience-item__content {
+
+
+
+        &:last-child {
+            padding-bottom: 0;
+        }
 
         .experience-item__position {
             font-family: Roboto;
