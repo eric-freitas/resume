@@ -13,5 +13,16 @@
     },
     "misc": {
         "today": "Today"
+    },
+    "info": {
+        "title": "About this site",
+        "text": [
+            "This page was developed in React with Typescript and is hosted on an AWS Amplify, connected directly to the GitHub repository.",
+            "Its content is stored in PostgreSQL, MongoDB and Elastic databases, all cloud based.",
+            "To retrieve it, the front-end calls Azure Functions written in Node.js, also with TypeScript.",
+            "",
+            "The complete source code can be found %link%."
+        ],
+        "link": "here"
     }
 }

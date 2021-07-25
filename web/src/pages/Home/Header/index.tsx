@@ -15,6 +15,7 @@ import UsaFlag from '../../../components/Icons/Flags/Usa/index';
 import EspanaFlag from '../../../components/Icons/Flags/Espana';
 
 import './header.scss';
+import SiteInfo from '../SiteInfo';
 
 
 const Header = () => {
@@ -76,10 +77,12 @@ const Header = () => {
                     </LanguageFlag>
                    
                 </div>
+                
+                <SiteInfo/>
+
                 <ContactInfo>
                     {itens}
                 </ContactInfo>
-                
             </div>
             
         </header>

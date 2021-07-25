@@ -1,0 +1,56 @@
+@import '../../../shared.scss';
+
+.site-info{
+    display: inline-block;
+    margin-right: $def-padding * 2;
+    vertical-align: top;
+
+    svg {
+        color: $blue;
+        font-size: 1.25rem;
+        margin-left: $def-padding;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: $break-small) {
+        position: absolute;
+        bottom: $def-padding;
+        right: $def-padding;
+        margin-right: 0;
+        span {
+            display: none;
+        }
+
+        svg {
+            margin-left: 0;
+        }
+
+    }
+
+   
+}
+
+.modal.show {
+    display: flex !important;
+    justify-content: center;
+    flex-direction: column;
+    .modal-body  {
+        color: $gray-800;
+        padding: $def-padding * 8;
+
+        a {
+            color: $blue;
+        }
+
+        p {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        @media screen and (max-width: $break-small) {
+            padding: $def-padding*2;
+        }
+    }
+}
+
