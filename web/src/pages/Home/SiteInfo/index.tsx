@@ -16,12 +16,12 @@ const SiteInfo = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const linkToGithub  = (<a target="_blank" rel="noreferrer" href="https://github.com/eric-freitas/resume">{t('info.link')}</a>);
+    const linkToGithub  = (<a key="link" target="_blank" rel="noreferrer" href="https://github.com/eric-freitas/resume">{t('info.link')}</a>);
     const _link_regex = /(%link%)/i;
 
     const modalTextList: string[] = t('info.text', {returnObjects: true})
-    const modalText = modalTextList.map(text =>  
-        (<p>
+    const modalText = modalTextList.map((text, index) =>  
+        (<p key={index}>
             {text
                 .split(_link_regex)
                 .map(text_child => {
