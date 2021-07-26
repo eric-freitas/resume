@@ -9,7 +9,13 @@ import { Dispatch } from 'react';
 const ApiService = () => {
 
       const doPost = (url: string, data: any, config? : AxiosRequestConfig | undefined, dispatch?: Dispatch<any>) => {
-        dispatch && dispatch(allActions.apiExec.setStatus(ApiExecStatus.Loading)) ;
+        dispatch && 
+		dispatch(allActions.apiExec.setStatus(
+			{
+				api		: url,
+				status 	: ApiExecStatus.Loading
+			})
+		);
     
         const headers = new Headers();
         headers.append('Content-Type', 'application/json; charset=utf-8');
@@ -17,30 +23,63 @@ const ApiService = () => {
         return new Promise((resolve, reject) => {
           api.post(url, data, config)
             .then(response => {
-              dispatch && dispatch(allActions.apiExec.setStatus(ApiExecStatus.Ok));
-              resolve(response);
+				dispatch && 
+				dispatch(allActions.apiExec.setStatus(
+					{
+						api		: url,
+						status 	: ApiExecStatus.Ok
+					})
+				);
+              	resolve(response);
             })
             .catch((error:any) => {
-              dispatch && dispatch(allActions.apiExec.setError(error)) ;
-              reject(error);
+				dispatch && 
+				dispatch(allActions.apiExec.setStatus(
+					{
+						api		: url,
+						status 	: ApiExecStatus.Error,
+						error
+					})
+				);
+				console.log(error);
+              	reject(error);
             });
         });
       };
 
       const doGet = (url: string, config? : AxiosRequestConfig | undefined, dispatch?: Dispatch<any>): Promise<any> => {
         
-        dispatch && dispatch(allActions.apiExec.setStatus(ApiExecStatus.Loading)) ;
+        dispatch && 
+		dispatch(allActions.apiExec.setStatus(
+			{
+				api		: url,
+				status 	: ApiExecStatus.Loading
+			})
+		);
     
         return new Promise((resolve, reject) => {
           api.get(url, config)
             .then((response:any) => {
-              dispatch && dispatch(allActions.apiExec.setStatus(ApiExecStatus.Ok));
-              resolve(response);
+				dispatch && 
+				dispatch(allActions.apiExec.setStatus(
+					{
+						api		: url,
+						status 	: ApiExecStatus.Ok
+					})
+				);
+              	resolve(response);
             })
             .catch((error:any) => {
-              dispatch && dispatch(allActions.apiExec.setError(error)) ;
-              console.log(error);
-              reject(error);
+				dispatch && 
+				dispatch(allActions.apiExec.setStatus(
+					{
+						api		: url,
+						status 	: ApiExecStatus.Error,
+						error
+					})
+				);
+              	console.log(error);
+              	reject(error);
             });
         });
       };

@@ -1,7 +1,8 @@
 
 export interface ApiExecDataStore {
-    error  : any,
-    status : ApiExecStatus
+    error? : any,
+    status : ApiExecStatus,
+    api    : string
 }
 
 export enum ApiExecStatus {

@@ -22,7 +22,6 @@ const ErrorMessage: React.FC<ErorMsgProps> = (props) => {
       if (show) {
         sleep(10000).then(s => setShow(false));
 	  }
-	  //return () => setShow(true);
     }, [ show ])
 
 

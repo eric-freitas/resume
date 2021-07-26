@@ -1,22 +1,28 @@
-import { ApiExecActionTypes, SET_ERROR, SET_STATUS } from '../actions/apiExec';
+import { ApiExecActionTypes, SET_STATUS } from '../actions/apiExec';
 import { ApiExecStatus } from '../models/ApiExec';
+import { AppDataState } from '../models/AppState';
 
-const apiExec = (state = {}, action: ApiExecActionTypes) => {
+
+const initialState: AppDataState = {
+    apiStatus: []
+}
+
+const apiExec = (state:AppDataState = initialState, action: ApiExecActionTypes):AppDataState => {
     switch(action.type){
-        case SET_ERROR:
+        case SET_STATUS:
+
+            let curApis = state.apiStatus.filter(e => e.api !== action.payload.api);
+            if (action.payload.status !== ApiExecStatus.Idle && action.payload.status !== ApiExecStatus.Ok) {
+                curApis.push(action.payload);
+            }
+
             return {
                 ...state,
-                error  : action.payload,
-                status : ApiExecStatus.Error
+                apiStatus : curApis
             }
-        case SET_STATUS:
-                return {
-                    ...state,
-                    status : action.payload
-                }
         default:
             return state
     }
-}
+} 
 
 export default apiExec;

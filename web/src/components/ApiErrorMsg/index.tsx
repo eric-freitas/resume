@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { ApiExecStatus } from '../../models/ApiExec';
-import { AppDataState } from '../../models/AppState';
+import { AppReducerData } from '../../reducers';
 import errorMsgHandler from '../../static/errorMsgHandler';
 import ErrorMessage from '../ErrorMessage';
 
@@ -9,21 +9,18 @@ const ApiErrorMsg = () => {
 
     const { httpStatusToTitle } = errorMsgHandler();
         
-    const apiStatus   = useSelector((state:AppDataState) => state.apiExec)
+    const apiStatus   = useSelector((state:AppReducerData) => state.appStatus?.apiStatus)
+    const errorMessage = apiStatus?.find(e => e.status === ApiExecStatus.Error && e.error && e.error.response);
     
-    let errorMessage = null;
-    if (apiStatus?.status === ApiExecStatus.Error && apiStatus?.error?.response ) {
+    if (errorMessage && errorMessage.error.response?.status !== 406) {
 
-        if (apiStatus?.error?.response?.status !== 406) {
-
-            const errorMsgDefinition = httpStatusToTitle(apiStatus?.error?.response?.status || 0);
-            const errorMsgText = apiStatus?.error?.response?.data?.err || apiStatus?.error?.response?.data?.msg || apiStatus?.error?.response?.data?.error;
-            
-            errorMessage = (<ErrorMessage title={errorMsgDefinition.title} icon={errorMsgDefinition.icon} message={(errorMsgText?.toString() || "")} />)
-        }
+        const errorMsgDefinition = httpStatusToTitle(errorMessage.error.response.status || 0);
+        const errorMsgText = errorMessage.error.response.data?.err || errorMessage.error.response.data?.msg || errorMessage.error.response.data?.error;
+        
+        return (<ErrorMessage title={errorMsgDefinition.title} icon={errorMsgDefinition.icon} message={(errorMsgText?.toString() || "")} />)
     }
 
-   return errorMessage;
+    return null;
 
 }
   

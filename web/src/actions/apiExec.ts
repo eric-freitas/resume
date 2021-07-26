@@ -1,4 +1,4 @@
-import { ApiExecStatus } from "../models/ApiExec";
+import { ApiExecDataStore } from "../models/ApiExec";
 
 export const SET_ERROR  = "SET_ERROR";
 export const SET_STATUS = "SET_STATUS";
@@ -10,18 +10,18 @@ interface SetErrorAction {
 
 interface SetStatusAction {
     type    : typeof SET_STATUS
-    payload : ApiExecStatus
+    payload : ApiExecDataStore
 }
 
-
+/*
 const setError = (data: any):SetErrorAction => {
     return {
         type    : SET_ERROR,
         payload : data
     }
-}
+}*/
 
-const setStatus = (data:ApiExecStatus):SetStatusAction => {
+const setStatus = (data:ApiExecDataStore):SetStatusAction => {
     return {
         type    : SET_STATUS,
         payload : data
@@ -29,7 +29,7 @@ const setStatus = (data:ApiExecStatus):SetStatusAction => {
 }
  // eslint-disable-next-line
 export default {
-    setError,
+    /*setError,*/
     setStatus
 }
 
