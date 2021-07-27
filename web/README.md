@@ -1,8 +1,6 @@
 <h1>Eric de Freitas Matos's Résumé</h1>
 <h2>React front-end App</h2>
 
----
-
 <p> Résumé front-end App, written in React
     <br> 
 </p>
