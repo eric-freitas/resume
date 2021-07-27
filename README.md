@@ -1,15 +1,12 @@
 <h1>Eric de Freitas Matos's Résumé</h1>
 
----
+This project is my personal résumé
+    
+It is composed of two applications:
+    
+- A front-end written in React;
+- Azure functions to perform back-end operations for the front-end.
 
-<p> This project is my personal résumé
-    
-    
-    It is composed of two applications:
-    
-    - A front-end written in React;
-    - Azure functions to perform back-end operations for the front-end.
-</p>
 
 ## 📝 Table of Contents
 
