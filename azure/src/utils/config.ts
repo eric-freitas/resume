@@ -1,3 +1,8 @@
+/**
+ * wraps all configuration into one object
+ *
+ * @return {*} 
+ */
 const config_data = () => {
 
     if (!process.env.PG_CONN || !process.env.ELASTIC_CONN || !process.env.MONGO_CONN) {

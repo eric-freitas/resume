@@ -7,6 +7,7 @@ if (!pgConn)  {
     throw new Error("pgConn not defined. check env and config files.");
 }
 
+
 export const pool = new Pool(pgConn);
 let poolOk = true;
 
@@ -25,6 +26,13 @@ pool.on('error', (err, client) => {
 
 export const schema = pgConn.schema || "resume";
 
+/**
+ * runs a complete transaction in postgres
+ *
+ * @export
+ * @param {((c:PoolClient) => Promise<any|null>)} transaction
+ * @return {*}  {(Promise<any|null>)}
+ */
 export async function runTransaction (transaction: (c:PoolClient) => Promise<any|null>): Promise<any|null> {
     const client = await pool.connect();
     let res = null;
@@ -41,14 +49,14 @@ export async function runTransaction (transaction: (c:PoolClient) => Promise<any
     return res;
 }
 
+/**
+ * closes postgres connections
+ *
+ * @export
+ */
 export async function stop () {
     if (poolOk) {
         await pool.end();
         poolOk = false;
     } 
 }
-
-export function logTransaction (title: string, text: string, result: any)  {
-    const { _parsers, _types, ...dados } = result;
-}
-

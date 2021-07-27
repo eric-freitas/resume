@@ -1,9 +1,21 @@
 import { ContactInfo } from '../../models/contactInfo';
 import { pool, schema } from '../pgConn';
 
-
+/**
+ * contact info database operation - using postgres
+ *
+ * @class DbContactInfo
+ */
 class DbContactInfo {
     
+    /**
+     * serializes raw db data into data to be rendered
+     *
+     * @private
+     * @param {*} data - raw data
+     * @return {*}  {ContactInfo} - an object containing contact info details
+     * @memberof DbContactInfo
+     */
     private serialize(data: any): ContactInfo {
         const { id_contact_info, id_icon, description, icon_lib, icon, hint, link_to, text } = data;
 
@@ -19,7 +31,14 @@ class DbContactInfo {
 
     }
 
-    async  list(lang: string): Promise<ContactInfo[]>  {
+    /**
+     * lists contact info from db
+     *
+     * @param {string} lang - language to filter
+     * @return {*}  {Promise<ContactInfo[]>} - a list of contact info data
+     * @memberof DbContactInfo
+     */
+    async list(lang: string): Promise<ContactInfo[]>  {
         const client = await pool.connect();
         try {
             let result = await client.query(`select 

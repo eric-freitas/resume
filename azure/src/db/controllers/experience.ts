@@ -5,6 +5,11 @@ import { Experience, ExperienceAttribution } from '../../models/experience';
 
 import { connect } from '../mongoConn';
 
+/**
+ * interface for mongoose data retrieval, mirroring mongodb documents
+ *
+ * @interface IExperience
+ */
 interface IExperience {
     lang        : string,
     company     : string,
@@ -32,9 +37,21 @@ const ExperienceSchema = new Schema(
 
 const MongoExperience:Model<IExperience>  = mongoose.model('Experience', ExperienceSchema, 'experience');
 
-
+/**
+ * experience info database operation - using mongoDb
+ *
+ * @class DbExperience
+ */
 class DbExperience {
 
+    /**
+     * serializes raw attribution data into data to be rendered
+     *
+     * @private
+     * @param {*} data - raw data
+     * @return {*}  {ExperienceAttribution} - an object containing attribution detail
+     * @memberof DbExperience
+     */
     private serializeAttribution(data: any): ExperienceAttribution {
         const { text, attribution } = data;
         return {
@@ -43,6 +60,14 @@ class DbExperience {
         }
     }
 
+    /**
+     * serializes raw experience data into data to be rendered
+     *
+     * @private
+     * @param {IExperience} data - raw data
+     * @return {*}  {Experience} - an object containing experience info detail
+     * @memberof DbExperience
+     */
     private serialize(data: IExperience): Experience {
         const { lang, company, position, conclusion, start, detail, attribution } = data;
 
@@ -57,7 +82,13 @@ class DbExperience {
 
     }
    
-
+    /**
+     * lists experience info data from db
+     *
+     * @param {string} lang - language to filter
+     * @return {*}  {Promise<Experience[]>} - a list of experience info objects
+     * @memberof DbExperience
+     */
     async list (lang: string) : Promise<Experience[]> {
         connect();
         try {
