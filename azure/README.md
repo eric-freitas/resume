@@ -1,8 +1,6 @@
 <h1>Eric de Freitas Matos's Résumé</h1>
 <h2>Azure functions</h2>
 
----
-
 <p> Back-end to provide information for Résumé React App, via Azure Functions
     <br> 
 </p>
