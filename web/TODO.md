@@ -1,11 +1,11 @@
 # Resume - Azure Functions
 
 ### Todo
-- [] Italian translation
-- [] French translation
+- [ ] Italian translation
+- [ ] French translation
 
 ### In progress
-- [] JSDocs
+- [ ] JSDocs
 
 ### Done ✓
 - [x] front-end App
